@@ -183,3 +183,40 @@ nvm install lts/carbon
 ```
 npm install -g appium
 ```
+
+# Create appium start-stop script
+```
+nano /opt/appium
+```
+
+```
+
+	#!/bin/bash
+
+	#chkconfig: 345 95 50
+	#description: Starts appium
+	if [ -z "$1" ]; then
+	echo "`basename $0` {start|stop}"
+	   exit
+	fi
+
+	case "$1" in
+	start)
+	   export NVM_DIR="$HOME/.nvm"
+	   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+	   appium &> ~/appium.log &
+	;;
+
+	stop)
+	   kill $(ps aux | grep 'appium' | awk '{print $2}')
+	;;
+	esac
+
+```
+
+```
+chmod +x /opt/appium
+echo "/opt/appium start" >> ~/.bashrc
+```
