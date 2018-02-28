@@ -19,11 +19,14 @@ echo "source /usr/local/rvm/scripts/rvm" >> ~/.bashrc
 
 
 # Install brew
+```
 . ~/.bashrc && echo -ne "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >> ~/.bashrc
 
 . ~/.bashrc && brew --version
+```
+
 
 # Install Java 8
 ```
@@ -75,8 +78,11 @@ brew install gradle
 
 
 # Install Xvfb
+```
 yum install psmisc -y
 yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi -y
+```
+
 
 # Create Xvfb start-stop script
 ```
