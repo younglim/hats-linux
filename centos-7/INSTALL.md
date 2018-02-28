@@ -1,4 +1,7 @@
-# Pre-requisites:
+# hats for Linux (CentOS/7)
+
+
+# Pre-requisites
 - Centos 7.x Minimal
 - Run commands as a sudoers user
 
@@ -8,6 +11,12 @@ sudo echo 'ONBOOT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
 sudo echo 'DHCLIENT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ```
 where `ifcfg-enp0s3` is your network interface
+
+# Recommended: Enable CentOS base repository
+```
+sudo yum-config-manager --enable base
+```
+
 
 # Install wget, zip, unzip, ansible, yum-utils
 ```
