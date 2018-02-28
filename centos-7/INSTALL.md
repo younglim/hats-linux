@@ -61,9 +61,9 @@ sudo chown `whoami`:wheel /opt/android-sdk
 echo "export ANDROID_SDK_ROOT=/opt/android-sdk" >> ~/.bashrc
 echo "export ANDROID_HOME=/opt/android-sdk" >> ~/.bashrc
 echo "export ANDROID_SDK_HOME=/opt/android-sdk" >> ~/.bashrc
-echo "export PATH=$ANDROID_HOME/platform-tools:$PATH" >> ~/.bashrc
-echo "export PATH=$ANDROID_HOME/tools:$PATH" >> ~/.bashrc
-echo "export PATH=$ANDROID_HOME/tools/bin:$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bashrc
 
 mkdir /opt/android-sdk/.android
 touch /opt/android-sdk/.android/repositories.cfg
