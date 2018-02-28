@@ -94,7 +94,7 @@ sudo yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi xorg-x11-server-Xvfb 
 
 # Create Xvfb start-stop script
 ```
-nano /opt/xvfb
+sudo nano /opt/xvfb
 ```
 
 Write to the file:
@@ -141,13 +141,17 @@ sudo pip install virtualenv
 
 # Create hats virtualenv
 ```
-virtualenv hats
-source hats/bin/activate
+sudo mkdir /opt/hats
+chown `whoami`:wheel /opt/hats
+virtualenv /opt/hats
+source /opt/hats/bin/activate
+export "source /opt/hats/bin/activate" >> ~/.bashrc
 ```
 
 
 # Install hats virtualenv
 ```
+source /opt/hats/bin/activate
 easy_install functools
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
@@ -155,7 +159,7 @@ pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install
 
 # Install Google Chrome yum repo
 ```
-nano /etc/yum.repos.d/Google-Chrome.repo
+sudo nano /etc/yum.repos.d/Google-Chrome.repo
 ```
 
 Write to the file:
@@ -210,7 +214,7 @@ npm install -g appium
 
 # Create appium start-stop script
 ```
-nano /opt/appium
+sudo nano /opt/appium
 ```
 
 Write to the file:
@@ -242,7 +246,7 @@ Write to the file:
 ```
 
 ```
-chmod +x /opt/appium
+sudo chmod +x /opt/appium
 echo "/opt/appium start" >> ~/.bashrc
 ```
 
