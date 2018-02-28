@@ -2,7 +2,7 @@
 - Centos 7.x Minimal
 - Run commands as a sudoers user
 
-# Enable DHCP client on boot
+# Optional: Enable DHCP client on boot
 ```
 sudo echo 'ONBOOT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
 sudo echo 'DHCLIENT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
@@ -11,6 +11,7 @@ where `ifcfg-enp0s3` is your network interface
 
 # Install wget, zip, unzip, ansible, yum-utils
 ```
+sudo yum update -y
 sudo yum install wget zip unzip epel-release yum-utils -y
 sudo yum install ansible -y
 ```
@@ -44,7 +45,7 @@ java -version
 
 # Download Android SDK
 ```
-https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
+wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 unzip sdk-tools-linux-3859397.zip -d sdk-tools
 sudo mkdir /opt/android-sdk
 sudo mv `pwd`/sdk-tools/* /opt/android-sdk/
@@ -77,7 +78,7 @@ printf 'y\ny\ny\ny\ny\n' | sdkmanager 'system-images;android-26;google_apis;x86'
 ```
 
 
-# Install ant maven gradle
+# Install ant, maven, gradle
 ```
 sudo yum install ant maven -y
 brew install gradle
@@ -87,7 +88,7 @@ brew install gradle
 # Install Xvfb
 ```
 yum install psmisc -y
-yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi -y
+yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi xorg-x11-server-Xvfb -y
 ```
 
 
@@ -96,6 +97,7 @@ yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi -y
 nano /opt/xvfb
 ```
 
+Write to the file:
 ```
 	#!/bin/bash
 
@@ -156,6 +158,7 @@ pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install
 nano /etc/yum.repos.d/Google-Chrome.repo
 ```
 
+Write to the file:
 ```
 	[google-chrome]
 	name=google-chrome
@@ -210,6 +213,7 @@ npm install -g appium
 nano /opt/appium
 ```
 
+Write to the file:
 ```
 
 	#!/bin/bash
