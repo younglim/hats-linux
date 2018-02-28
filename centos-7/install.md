@@ -170,11 +170,25 @@ yum info google-chrome-stable
 sudo yum install google-chrome-stable -y
 ```
 
+# Install Firefox
+```
+wget http://ftp.mozilla.org/pub/firefox/releases/58.0/linux-x86_64/en-US/firefox-58.0.tar.bz2
+sudo tar xvfj firefox-58.0.tar.bz2 -C /opt
+echo "export PATH=/opt/firefox:$PATH" >> ~/.bashrc
+```
+
+
 # Install Chromedriver
 ```
 wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip -d ~/hats
 echo "export PATH=~/hats:$PATH" >> ~/.bashrc
+```
+
+# Install Geckodriver
+```
+wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
+tar -xvzf geckodriver-v0.19.1-linux64.tar.gz
 ```
 
 
