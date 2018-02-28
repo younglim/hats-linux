@@ -153,6 +153,7 @@ echo "source /opt/hats/bin/activate" >> ~/.bashrc
 ```
 source /opt/hats/bin/activate
 easy_install functools
+pip install python-xlib
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
