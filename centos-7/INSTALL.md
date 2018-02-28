@@ -26,10 +26,10 @@ echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
 
 # Install brew
 ```
-. ~/.bashrc
+source ~/.bashrc
 echo -ne "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:\$PATH"' >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 brew --version
 ```
 
@@ -121,7 +121,7 @@ Write to the file:
 ```
 
 ```
-chmod +x /opt/xvfb
+sudo chmod +x /opt/xvfb
 echo "sudo /opt/xvfb start" >> ~/.bashrc
 echo "export DISPLAY=:99" >> ~/.bashrc
 ```
@@ -145,7 +145,7 @@ sudo mkdir /opt/hats
 chown `whoami`:wheel /opt/hats
 virtualenv /opt/hats
 source /opt/hats/bin/activate
-export "source /opt/hats/bin/activate" >> ~/.bashrc
+echo "source /opt/hats/bin/activate" >> ~/.bashrc
 ```
 
 
