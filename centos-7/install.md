@@ -169,3 +169,17 @@ wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip -d ~/hats
 echo "export PATH=~/hats:$PATH" >> ~/.bashrc
 ```
+
+
+# Install NVM and Node lts/carbon
+```
+\curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+. ~/.bashrc
+nvm install lts/carbon
+```
+
+
+# Install appium
+```
+npm install -g appium
+```
