@@ -13,15 +13,15 @@ sudo echo 'DHCLIENT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ```
 where `ifcfg-enp0s3` is your network interface
 
-## Recommended: Enable CentOS base repository
+## Recommended: Enable CentOS base repository and update system
 ```
 sudo yum-config-manager --enable base
+sudo yum update -y
 ```
 
 
 ## Install wget, zip, unzip, ansible, yum-utils
 ```
-sudo yum update -y
 sudo yum install wget zip unzip epel-release yum-utils -y
 sudo yum install ansible -y
 ```
