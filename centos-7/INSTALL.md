@@ -26,11 +26,11 @@ echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
 
 # Install brew
 ```
-. ~/.bashrc && echo -ne "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-
-echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >> ~/.bashrc
-
-. ~/.bashrc && brew --version
+. ~/.bashrc
+echo -ne "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:\$PATH"' >> ~/.bashrc
+. ~/.bashrc
+brew --version
 ```
 
 
@@ -65,6 +65,7 @@ echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bashrc
 echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bashrc
 echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bashrc
 
+source ~/.bashrc
 mkdir /opt/android-sdk/.android
 touch /opt/android-sdk/.android/repositories.cfg
 ```
@@ -175,7 +176,7 @@ sudo yum install google-chrome-stable -y
 ```
 wget http://ftp.mozilla.org/pub/firefox/releases/58.0/linux-x86_64/en-US/firefox-58.0.tar.bz2
 sudo tar xvfj firefox-58.0.tar.bz2 -C /opt
-echo "export PATH=/opt/firefox:$PATH" >> ~/.bashrc
+echo "export PATH=/opt/firefox:\$PATH" >> ~/.bashrc
 ```
 
 
@@ -183,7 +184,7 @@ echo "export PATH=/opt/firefox:$PATH" >> ~/.bashrc
 ```
 wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip -d ~/hats
-echo "export PATH=~/hats:$PATH" >> ~/.bashrc
+echo "export PATH=~/hats:\$PATH" >> ~/.bashrc
 ```
 
 # Install Geckodriver
