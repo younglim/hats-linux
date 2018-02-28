@@ -228,5 +228,23 @@ chmod +x /opt/appium
 echo "/opt/appium start" >> ~/.bashrc
 ```
 
+
 # Install usbutils
+```
 sudo yum install usbutils -y
+```
+
+
+# Edit udev to allow usb devices for non-root user
+```
+wget https://raw.githubusercontent.com/M0Rf30/android-udev-rules/master/51-android.rules
+sudo cp 51-android.rules /etc/udev/rules.d/51-android.rules
+sudo chmod a+r /etc/udev/rules.d/51-android.rules
+sudo groupdel adbusers
+sudo groupadd adbusers
+sudo usermod -a -G adbusers $(whoami)
+sudo /sbin/udevadm control --reload-rules
+sudo systemctl restart systemd-udevd
+sudo killall adb
+adb devices -l
+```
