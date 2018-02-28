@@ -9,9 +9,9 @@ sudo echo 'DHCLIENT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ```
 where `ifcfg-enp0s3` is your network interface
 
-# Install wget, zip, unzip, ansible
+# Install wget, zip, unzip, ansible, yum-utils
 ```
-sudo yum install wget zip unzip epel-release -y
+sudo yum install wget zip unzip epel-release yum-utils -y
 sudo yum install ansible -y
 ```
 
