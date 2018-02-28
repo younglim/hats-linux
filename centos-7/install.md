@@ -2,6 +2,13 @@
 - Centos 7.x Minimal
 - Run commands as a sudoers user
 
+# Enable DHCP client on boot
+```
+sudo echo 'ONBOOT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
+sudo echo 'DHCLIENT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
+```
+where `ifcfg-enp0s3` is your network interface
+
 # Install wget, zip, unzip, ansible
 ```
 sudo yum install wget zip unzip epel-release -y
@@ -220,3 +227,6 @@ nano /opt/appium
 chmod +x /opt/appium
 echo "/opt/appium start" >> ~/.bashrc
 ```
+
+# Install usbutils
+sudo yum install usbutils -y
