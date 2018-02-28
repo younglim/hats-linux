@@ -199,14 +199,14 @@ echo "export PATH=/opt/firefox:\$PATH" >> ~/.bashrc
 ## Install Chromedriver
 ```
 wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
-unzip chromedriver_linux64.zip -d ~/hats
-echo "export PATH=~/hats:\$PATH" >> ~/.bashrc
+unzip chromedriver_linux64.zip -d /opt/hats
+echo "export PATH=/opt/hats:\$PATH" >> ~/.bashrc
 ```
 
 ## Install Geckodriver
 ```
 wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
-tar -xvzf geckodriver-v0.19.1-linux64.tar.gz
+tar -xvzf geckodriver-v0.19.1-linux64.tar.gz -C /opt/hats
 ```
 
 
