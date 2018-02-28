@@ -87,8 +87,8 @@ brew install gradle
 
 # Install Xvfb
 ```
-yum install psmisc -y
-yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi xorg-x11-server-Xvfb -y
+sudo yum install psmisc -y
+sudo yum install xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi xorg-x11-server-Xvfb -y
 ```
 
 
