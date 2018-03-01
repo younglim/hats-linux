@@ -250,7 +250,7 @@ Write to the file:
 	;;
 
 	stop)
-	   kill $(ps aux | grep 'appium' | awk '{print $2}')
+	   killall -r "^node"
 	;;
 	esac
 
