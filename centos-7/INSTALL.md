@@ -43,7 +43,7 @@ rvm install ruby-head
 ```
 source ~/.bashrc
 echo -ne "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:\$PATH"' >> ~/.bashrc
+echo "export PATH=/home/linuxbrew/.linuxbrew/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 brew --version
 ```
