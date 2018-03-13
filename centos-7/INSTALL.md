@@ -181,9 +181,9 @@ baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
 enabled=1
 gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
-EOF
+EOF'
 
-dnf install google-chrome-stable'
+dnf install google-chrome-stable -y
 
 ```
 
