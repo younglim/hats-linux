@@ -114,25 +114,24 @@ sudo nano /opt/xvfb
 
 Write to the file:
 ```
-	#!/bin/bash
+#!/bin/bash
 
-	#chkconfig: 345 95 50
-	#description: Starts xvfb on display 99
-	if [ -z "$1" ]; then
-	echo "`basename $0` {start|stop}"
-	   exit
-	fi
+#chkconfig: 345 95 50
+#description: Starts xvfb on display 99
+if [ -z "$1" ]; then
+echo "`basename $0` {start|stop}"
+   exit
+fi
 
-	case "$1" in
-	start)
-	   /usr/bin/Xvfb :99 -screen 0 1280x1024x24 &> /var/log/xvfb.log &
-	;;
+case "$1" in
+start)
+   /usr/bin/Xvfb :99 -screen 0 1280x1024x24 &> /var/log/xvfb.log &
+;;
 
-	stop)
-	   killall Xvfb
-	;;
-	esac
-
+stop)
+   killall Xvfb
+;;
+esac
 ```
 
 ```
@@ -175,22 +174,17 @@ pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install
 
 ## Install Google Chrome yum repo
 ```
-sudo nano /etc/yum.repos.d/Google-Chrome.repo
-```
-
-Write to the file:
-```
+sudo bash -c'cat << EOF > /etc/yum.repos.d/google-chrome.repo
 [google-chrome]
-name=google-chrome
-baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+name=google-chrome - \$basearch
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
 enabled=1
 gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
-```
+EOF
 
-```
-yum info google-chrome-stable
-sudo yum install google-chrome-stable -y
+dnf install google-chrome-stable'
+
 ```
 
 ## Install Firefox
@@ -235,30 +229,28 @@ sudo nano /opt/appium
 
 Write to the file:
 ```
+#!/bin/bash
 
-	#!/bin/bash
+#chkconfig: 345 95 50
+#description: Starts appium
+if [ -z "$1" ]; then
+echo "`basename $0` {start|stop}"
+   exit
+fi
 
-	#chkconfig: 345 95 50
-	#description: Starts appium
-	if [ -z "$1" ]; then
-	echo "`basename $0` {start|stop}"
-	   exit
-	fi
+case "$1" in
+start)
+   export NVM_DIR="$HOME/.nvm"
+   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-	case "$1" in
-	start)
-	   export NVM_DIR="$HOME/.nvm"
-	   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-	   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+   appium &> ~/appium.log &
+;;
 
-	   appium &> ~/appium.log &
-	;;
-
-	stop)
-	   killall -r "^node"
-	;;
-	esac
-
+stop)
+   killall -r "^node"
+;;
+esac
 ```
 
 ```
