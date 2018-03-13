@@ -156,7 +156,7 @@ sudo pip install virtualenv
 ## Create hats virtualenv
 ```
 sudo mkdir /opt/hats
-chown `whoami`:wheel /opt/hats
+sudo chown $(whoami):wheel /opt/hats
 virtualenv /opt/hats
 source /opt/hats/bin/activate
 echo "source /opt/hats/bin/activate" >> ~/.bashrc
