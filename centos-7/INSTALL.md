@@ -1,4 +1,4 @@
-# hats for Linux (CentOS/7)
+# hats for Linux (CentOS/7 and Fedora 27)
 
 Steps to install test automation tools and dependencies for CentOS 7.
 
@@ -146,6 +146,10 @@ echo "export DISPLAY=:99" >> ~/.bashrc
 sudo yum install python-pip python-devel python-xlib -y
 ```
 
+## Install openssl-devel
+```
+sudo yum install openssl-devel -y
+```
 
 ## Install virtualenv
 ```
@@ -176,7 +180,7 @@ pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install
 
 ## Install Google Chrome yum repo
 ```
-sudo bash -c'cat << EOF > /etc/yum.repos.d/google-chrome.repo
+sudo bash -c 'cat << EOF > /etc/yum.repos.d/google-chrome.repo
 [google-chrome]
 name=google-chrome - \$basearch
 baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
@@ -184,6 +188,7 @@ enabled=1
 gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF'
+
 
 dnf install google-chrome-stable -y
 
