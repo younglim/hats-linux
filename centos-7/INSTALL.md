@@ -224,10 +224,12 @@ nvm install lts/carbon
 ```
 
 
-## Install appium
+## Install appium and dependencies
 ```
 sudo yum install gcc-c++ -y
 npm install -g appium
+npm install -g appium-uiautomator2-driver
+npm install -g appium-adb
 ```
 
 ## Create appium start-stop script
