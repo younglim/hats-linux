@@ -226,6 +226,7 @@ nvm install lts/carbon
 
 ## Install appium
 ```
+sudo yum install gcc-c++ -y
 npm install -g appium
 ```
 
