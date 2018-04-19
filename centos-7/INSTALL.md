@@ -6,6 +6,25 @@ Steps to install test automation tools and dependencies for CentOS 7.
 - Centos 7.x Minimal
 - Run commands as a sudoers user
 
+## Disable password requirement for sudo
+`sudo visudo`
+
+Scroll down to the following section
+```
+## Same thing without a password
+# %wheel        ALL=(ALL)       NOPASSWD: ALL
+```
+
+
+Use key [d] to remove the `#` from the line:
+```
+%wheel        ALL=(ALL)       NOPASSWD: ALL
+```
+
+
+Type `:wq!` to save and exit.
+
+
 ## Optional: Enable DHCP client on boot
 ```
 sudo echo 'ONBOOT=yes' >> /etc/sysconfig/network-scripts/ifcfg-enp0s3
@@ -174,8 +193,7 @@ sudo pip install --upgrade pip
 sudo pip install --upgrade setuptools
 easy_install functools
 pip install python-xlib
-sudo /opt/xvfb start
-export DISPLAY=:99 // Temp measure
+source ~/.bashrc
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
