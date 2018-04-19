@@ -175,7 +175,7 @@ sudo pip install --upgrade setuptools
 easy_install functools
 pip install python-xlib
 sudo /opt/xvfb start
-export DISPLAY=99
+export DISPLAY=:99 // Temp measure
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
@@ -192,7 +192,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF'
 
 
-dnf install google-chrome-stable -y
+sudo yum install google-chrome-stable -y
 
 ```
 
