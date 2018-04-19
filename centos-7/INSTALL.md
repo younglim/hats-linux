@@ -174,6 +174,8 @@ sudo pip install --upgrade pip
 sudo pip install --upgrade setuptools
 easy_install functools
 pip install python-xlib
+sudo /opt/xvfb start
+export DISPLAY=99
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
