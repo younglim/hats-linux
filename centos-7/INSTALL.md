@@ -174,6 +174,8 @@ sudo pip install --upgrade pip
 sudo pip install --upgrade setuptools
 easy_install functools
 pip install python-xlib
+sudo /opt/xvfb start
+export DISPLAY=:99 // Temp measure
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
@@ -190,7 +192,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF'
 
 
-dnf install google-chrome-stable -y
+sudo yum install google-chrome-stable -y
 
 ```
 
@@ -228,8 +230,6 @@ nvm install lts/carbon
 ```
 sudo yum install gcc-c++ -y
 npm install -g appium
-npm install -g appium-uiautomator2-driver
-npm install -g appium-adb
 ```
 
 ## Create appium start-stop script
