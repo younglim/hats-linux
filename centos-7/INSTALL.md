@@ -306,3 +306,15 @@ sudo systemctl restart systemd-udevd
 sudo killall adb
 adb devices -l
 ```
+
+## Missing UIAutomator2 or Chromedriver
+
+Remove all npm global packages
+```
+npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
+```
+
+Re-install appium
+```
+npm install -g appium
+```
