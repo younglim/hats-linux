@@ -194,6 +194,7 @@ sudo pip install --upgrade setuptools
 easy_install functools
 pip install python-xlib
 source ~/.bashrc
+sudo yum install libjpeg-devel (to fix CentOS missing JPEG)
 pip install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
 ```
 
