@@ -170,6 +170,12 @@ sudo yum install python-pip python-devel python-xlib -y
 sudo yum install openssl-devel -y
 ```
 
+## Install missing JPEG lib 
+```
+yum install libjpeg-devel
+yum install libjpeg-turbo-devel
+```
+
 ## Install virtualenv
 ```
 sudo pip install virtualenv
