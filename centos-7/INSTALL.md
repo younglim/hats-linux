@@ -172,8 +172,7 @@ sudo yum install openssl-devel -y
 
 ## Install missing JPEG lib 
 ```
-yum install libjpeg-devel
-yum install libjpeg-turbo-devel
+yum install libjpeg-devel libjpeg-turbo-devel -y
 ```
 
 ## Install virtualenv
