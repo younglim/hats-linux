@@ -108,7 +108,8 @@ touch /opt/android-sdk/.android/repositories.cfg
 ## Install Android build tools
 ```
 yes | sdkmanager --licenses
-sdkmanager 'system-images;android-27;google_apis;x86' 'build-tools;27.0.2' 'platform-tools'
+sdkmanager 'system-images;android-27;google_apis;x86' 'build-tools;27.0.3' 'platform-tools'
+
 ```
 
 
