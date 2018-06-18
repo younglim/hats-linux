@@ -77,7 +77,7 @@ java -version
 
 ## Download Android SDK
 ```
-wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
+wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 unzip sdk-tools-linux-3859397.zip -d sdk-tools
 sudo mkdir /opt/android-sdk
 sudo mv `pwd`/sdk-tools/* /opt/android-sdk/
@@ -108,7 +108,8 @@ touch /opt/android-sdk/.android/repositories.cfg
 ## Install Android build tools
 ```
 yes | sdkmanager --licenses
-sdkmanager 'build-tools;27.0.3' 'system-images;android-27;google_apis;x86' 'platform-tools'
+sdkmanager 'system-images;android-27;google_apis;x86' 'build-tools;27.0.3' 'platform-tools'
+
 ```
 
 
