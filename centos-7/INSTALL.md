@@ -38,6 +38,14 @@ sudo yum-config-manager --enable base
 sudo yum update -y
 ```
 
+## Disable automount tmpfs at /tmp
+```
+systemctl mask tmp.mount
+```
+
+Reboot the machine with `sudo reboot now` .
+
+
 
 ## Install wget, zip, unzip, ansible, yum-utils
 ```
@@ -78,7 +86,7 @@ java -version
 ## Download Android SDK
 ```
 wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
-unzip sdk-tools-linux-3859397.zip -d sdk-tools
+unzip sdk-tools-linux-4333796.zip -d sdk-tools
 sudo mkdir /opt/android-sdk
 sudo mv `pwd`/sdk-tools/* /opt/android-sdk/
 ```
