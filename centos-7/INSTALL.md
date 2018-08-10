@@ -116,10 +116,16 @@ touch /opt/android-sdk/.android/repositories.cfg
 ## Install Android build tools
 ```
 yes | sdkmanager --licenses
-sdkmanager 'system-images;android-27;google_apis;x86' 'build-tools;27.0.3' 'platform-tools'
+sdkmanager 'system-images;android-28;google_apis;x86' 'build-tools;28.0.2' 'platform-tools' 'platforms;android-28'
 
 ```
 
+## Optional Install Android Emulator (for non-VM environment)
+```
+sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
+avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
+echo "hw.keyboard=yes" >> /opt/android-sdk/.android/avd/AVDPBIG.avd/config.ini 
+```
 
 ## Install ant, maven, gradle
 ```
@@ -239,14 +245,14 @@ echo "export PATH=/opt/firefox:\$PATH" >> ~/.bashrc
 
 ## Install Chromedriver
 ```
-wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
+wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip -d /opt/hats
 echo "export PATH=/opt/hats:\$PATH" >> ~/.bashrc
 ```
 
 ## Install Geckodriver
 ```
-wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
+wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.19.1-linux64.tar.gz
 tar -xvzf geckodriver-v0.19.1-linux64.tar.gz -C /opt/hats
 ```
 
@@ -262,7 +268,7 @@ nvm install lts/carbon
 ## Install appium and dependencies
 ```
 sudo yum install gcc-c++ -y
-npm install -g appium
+npm install -g appium@1.8.0
 ```
 
 ## Create appium start-stop script
