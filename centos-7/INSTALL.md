@@ -252,8 +252,8 @@ echo "export PATH=/opt/hats:\$PATH" >> ~/.bashrc
 
 ## Install Geckodriver
 ```
-wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.19.1-linux64.tar.gz
-tar -xvzf geckodriver-v0.19.1-linux64.tar.gz -C /opt/hats
+wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz
+tar -xvzf geckodriver-v0.21.0-linux64.tar.gz -C /opt/hats
 ```
 
 
