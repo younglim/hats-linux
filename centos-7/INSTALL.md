@@ -106,6 +106,7 @@ echo "export ANDROID_SDK_HOME=/opt/android-sdk" >> ~/.bashrc
 echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bashrc
 echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bashrc
 echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_SDK_ROOT/emulator:\$PATH" >> ~/.bashrc
 
 source ~/.bashrc
 mkdir /opt/android-sdk/.android
@@ -123,7 +124,7 @@ sdkmanager 'system-images;android-28;google_apis;x86' 'build-tools;28.0.2' 'plat
 ## Optional Install Android Emulator (for non-VM environment)
 ```
 sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
-avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
+avdmanager create avd --package 'system-images;android-28;google_apis;x86' --name AVDPBIG --device 'pixel_xl'
 echo "hw.keyboard=yes" >> /opt/android-sdk/.android/avd/AVDPBIG.avd/config.ini 
 ```
 
