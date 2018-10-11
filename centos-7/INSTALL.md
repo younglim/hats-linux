@@ -275,7 +275,7 @@ nvm install lts/carbon
 ## Install appium and dependencies
 ```
 sudo yum install gcc-c++ -y
-npm install -g appium@1.8.0
+npm install -g appium@1.8.1
 ```
 
 ## Create appium start-stop script
