@@ -76,6 +76,12 @@ brew --version
 ```
 
 
+## Install scrcpy
+```
+brew install scrcpy
+```
+
+
 ## Install Java 8
 ```
 sudo yum install java -y
