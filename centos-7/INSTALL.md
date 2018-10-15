@@ -130,8 +130,8 @@ sdkmanager 'system-images;android-28;google_apis;x86' 'build-tools;28.0.2' 'plat
 ## Optional Install Android Emulator (for non-VM environment)
 ```
 sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
-avdmanager create avd --package 'system-images;android-28;google_apis;x86' --name AVDPBIG --device 'pixel_xl'
-echo "hw.keyboard=yes" >> /opt/android-sdk/.android/avd/AVDPBIG.avd/config.ini 
+avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
+echo "hw.keyboard=yes" >> $ANDROID_SDK_HOME/.android/avd/AVDPBIG.avd/config.ini 
 ```
 
 ## Install ant, maven, gradle
