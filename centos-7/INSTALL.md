@@ -218,6 +218,7 @@ echo "source /opt/hats/bin/activate" >> ~/.bashrc
 source /opt/hats/bin/activate
 sudo pip install --upgrade pip
 sudo pip install --upgrade setuptools
+sudo yum install -y redhat-rpm-config
 easy_install functools
 pip install python-xlib
 source ~/.bashrc
