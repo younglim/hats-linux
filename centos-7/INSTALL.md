@@ -1,4 +1,4 @@
-# hats for Linux (CentOS/7 and Fedora 27)
+# hats for Linux (CentOS/7 and Fedora 27-29)
 
 Steps to install test automation tools and dependencies for CentOS 7.
 
