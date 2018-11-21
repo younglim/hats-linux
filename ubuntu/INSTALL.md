@@ -75,4 +75,7 @@ sudo usermod -a -G adbusers $(whoami)
 sudo /sbin/udevadm control --reload-rules
 sudo systemctl restart systemd-udevd
 
+# Additional requirements for sharing screen over HTTP
+sudo apt install xpra python-websockify -y
+
 ```
