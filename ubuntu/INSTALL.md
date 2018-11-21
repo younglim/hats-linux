@@ -3,7 +3,7 @@
 Steps to install test automation tools and dependencies for CentOS 7.
 
 ## Pre-requisites
-- Centos 7.x Minimal
+- tested on Ubuntu Desktop
 - Run commands as a sudoers user
 
 ## Instructions
