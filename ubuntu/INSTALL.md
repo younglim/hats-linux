@@ -12,25 +12,25 @@ Steps to install test automation tools and dependencies for CentOS 7.
 # Remove Password sudo
 sudo echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers.d/$USER
 
-# Install brew
-yes | brew
-
-
 # Install Oracle JDK 8
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt update -y
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
 sudo apt install oracle-java8-set-default -y
 
-# Install Android SDK
-sudo apt-get install android-sdk -y
-
-# Install Android SDK Manager
+# Install Android SDK with SDK Manager
 wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 sudo mkdir /opt/android-sdk
 sudo chown $USER /opt/android-sdk
 unzip sdk-tools-linux-4333796.zip -d /opt/android-sdk
-echo "export PATH=/opt/android-sdk/tools/bin:\$PATH" >> ~/.bashrc
+echo "export ANDROID_SDK_ROOT=/opt/android-sdk" >> ~/.bashrc
+echo "export ANDROID_HOME=/opt/android-sdk" >> ~/.bashrc
+echo "export ANDROID_SDK_HOME=~" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bashrc
+echo "export PATH=\$ANDROID_SDK_ROOT/emulator:\$PATH" >> ~/.bashrc
+source ~/.bashrc
 yes | sdkmanager --licenses
 
 # Install Build Tools
@@ -74,6 +74,10 @@ sudo groupadd adbusers
 sudo usermod -a -G adbusers $(whoami)
 sudo /sbin/udevadm control --reload-rules
 sudo systemctl restart systemd-udevd
+
+# Install scrcpy
+yes | brew
+brew install scrcpy
 
 # Additional requirements for sharing screen over HTTP
 sudo apt install xpra python-websockify -y
