@@ -81,7 +81,8 @@ sudo unzip scrcpy.zip -d /usr/local/share
 echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
 
 # Additional requirements for sharing screen over HTTP
-sudo apt install xpra python-websockify -y
+sudo apt install xpra python-websockify -y 
+echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
 
 # Install Android Emulator
 sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
