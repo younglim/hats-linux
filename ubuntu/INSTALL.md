@@ -1,6 +1,6 @@
 # hats for Linux (Ubuntu 18.04 LTS or later)
 
-Steps to install test automation tools and dependencies for CentOS 7.
+Steps to install test automation tools and dependencies for Ubuntu.
 
 ## Pre-requisites
 - tested on Ubuntu Desktop
