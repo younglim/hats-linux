@@ -78,4 +78,14 @@ sudo systemctl restart systemd-udevd
 # Additional requirements for sharing screen over HTTP
 sudo apt install xpra python-websockify -y
 
+# Install Android Emulator
+sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
+avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
+echo "hw.keyboard=yes" >> ~/.android/avd/AVDPBIG.avd/config.ini 
+sudo chown $USER -R /dev/kvm
+echo 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' >> ~/.bashrc
+~/.bashrc
+
+# Start the Emulator
+emulator -avd AVDPBIG
 ```
