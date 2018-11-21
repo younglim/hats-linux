@@ -79,6 +79,7 @@ sudo systemctl restart systemd-udevd
 wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
 sudo unzip scrcpy.zip -d /usr/local/share
 echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
+source ~/.bashrc
 
 # Additional requirements for sharing screen over HTTP
 sudo apt install xpra python-websockify -y 
