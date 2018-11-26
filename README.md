@@ -19,5 +19,11 @@ rmdir /media/VBoxGuestAdditions
 ```
 
 ## Install hats for Linux
-Follow the instuctions at:
+
+### Ubuntu
+For installation of hats on Ubuntu, navigate to
+https://github.com/younglim/hats-linux/blob/master/ubuntu/INSTALL.md
+
+### CentOS/7 and Fedora
+For installation of hats on CentOS and Fedora, navigate to
 https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md
