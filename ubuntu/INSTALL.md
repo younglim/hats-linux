@@ -92,7 +92,8 @@ sudo unzip usr-share-xpra-www.zip -d /usr/share/xpra/
 sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
 avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
 echo "hw.keyboard=yes" >> ~/.android/avd/AVDPBIG.avd/config.ini 
-sudo chown $USER -R /dev/kvm
+sudo apt install qemu-kvm -y
+sudo adduser $USER kvm
 echo 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' >> ~/.bashrc
 ~/.bashrc
 
