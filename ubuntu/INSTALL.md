@@ -47,6 +47,11 @@ sudo apt install ant maven gradle -y
 
 # Install Xvfb
 sudo apt install xvfb -y
+sudo wget https://raw.githubusercontent.com/younglim/hats-linux/master/scripts/Xvfb -P /opt/
+sudo chmod +x /opt/xvfb
+echo "sudo /opt/xvfb start" >> ~/.bashrc
+echo "export DISPLAY=:99" >> ~/.bashrc
+. ~/.bashrc
 
 # Install Python pip and virtualenv
 sudo apt install python-pip -y
