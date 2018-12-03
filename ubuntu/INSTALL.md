@@ -19,7 +19,7 @@ sudo apt install unzip
 sudo echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers.d/$USER
 
 # Install Oracle JDK 8
-sudo add-apt-repository ppa:webupd8team/java
+sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt update -y
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
 sudo apt install oracle-java8-set-default -y
