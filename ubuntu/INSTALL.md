@@ -5,6 +5,12 @@ Steps to install test automation tools and dependencies for Ubuntu.
 ## Pre-requisites
 - tested on Ubuntu Desktop
 - Run commands as a sudoers user
+- Install the following minimum packages:
+
+```
+sudo apt install unzip
+
+```
 
 ## Instructions
 
