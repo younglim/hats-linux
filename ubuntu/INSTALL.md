@@ -94,7 +94,7 @@ echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
 source ~/.bashrc
 
 # Additional requirements for sharing screen over HTTP
-sudo apt install xpra python-websockify -y 
+sudo apt install xpra python-websockify libcanberra-gtk-module -y 
 echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
 wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/usr-share-xpra-www.zip
 sudo unzip usr-share-xpra-www.zip -d /usr/share/xpra/
