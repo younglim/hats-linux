@@ -90,7 +90,7 @@ sudo systemctl restart systemd-udevd
 sudo apt install -y libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libavformat-dev
 wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
 sudo unzip scrcpy.zip -d /usr/local/share
-echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
+echo "export PATH=\$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
 source ~/.bashrc
 
 # Additional requirements for sharing screen over HTTP
