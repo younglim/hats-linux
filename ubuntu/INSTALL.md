@@ -29,14 +29,14 @@ wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 sudo mkdir /opt/android-sdk
 sudo chown $USER /opt/android-sdk
 unzip sdk-tools-linux-4333796.zip -d /opt/android-sdk
-echo "export ANDROID_SDK_ROOT=/opt/android-sdk" >> ~/.bashrc
-echo "export ANDROID_HOME=/opt/android-sdk" >> ~/.bashrc
-echo "export ANDROID_SDK_HOME=~" >> ~/.bashrc
-echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bashrc
-echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bashrc
-echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bashrc
-echo "export PATH=\$ANDROID_SDK_ROOT/emulator:\$PATH" >> ~/.bashrc
-source ~/.bashrc
+echo "export ANDROID_SDK_ROOT=/opt/android-sdk" >> ~/.bash_profile
+echo "export ANDROID_HOME=/opt/android-sdk" >> ~/.bash_profile
+echo "export ANDROID_SDK_HOME=~" >> ~/.bash_profile
+echo "export PATH=\$ANDROID_HOME/platform-tools:\$PATH" >> ~/.bash_profile
+echo "export PATH=\$ANDROID_HOME/tools:\$PATH" >> ~/.bash_profile
+echo "export PATH=\$ANDROID_HOME/tools/bin:\$PATH" >> ~/.bash_profile
+echo "export PATH=\$ANDROID_SDK_ROOT/emulator:\$PATH" >> ~/.bash_profile
+source ~/.bash_profile
 yes | sdkmanager --licenses
 
 # Install Build Tools
@@ -49,9 +49,9 @@ sudo apt install ant maven gradle -y
 sudo apt install xvfb -y
 sudo wget https://raw.githubusercontent.com/younglim/hats-linux/master/scripts/xvfb -P /opt/
 sudo chmod +x /opt/xvfb
-echo "sudo /opt/xvfb start" >> ~/.bashrc
-echo "export DISPLAY=:99" >> ~/.bashrc
-. ~/.bashrc
+echo "sudo /opt/xvfb start" >> ~/.bash_profile
+echo "export DISPLAY=:99" >> ~/.bash_profile
+. ~/.bash_profile
 
 # Install Python pip and virtualenv
 sudo apt install python-pip -y
@@ -62,7 +62,7 @@ sudo mkdir /opt/hats
 sudo chown $USER /opt/hats
 virtualenv /opt/hats
 source /opt/hats/bin/activate
-echo "source /opt/hats/bin/activate" >> ~/.bashrc
+echo "source /opt/hats/bin/activate" >> ~/.bash_profile
 
 # Install hats virtualenv
 easy_install functools
@@ -90,8 +90,8 @@ sudo systemctl restart systemd-udevd
 sudo apt install -y libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libavformat-dev
 wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
 sudo unzip scrcpy.zip -d /usr/local/share
-echo "export PATH=\$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
-source ~/.bashrc
+echo "export PATH=\$PATH:/usr/local/share/scrcpy" >> ~/.bash_profile
+source ~/.bash_profile
 
 # Additional requirements for sharing screen over HTTP
 sudo apt install xpra python-websockify libcanberra-gtk-module -y 
@@ -105,8 +105,8 @@ avdmanager create avd --package 'system-images;android-28;google_apis_playstore;
 echo "hw.keyboard=yes" >> ~/.android/avd/AVDPBIG.avd/config.ini 
 sudo apt install qemu-kvm -y
 sudo adduser $USER kvm
-echo 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' >> ~/.bashrc
-~/.bashrc
+echo 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' >> ~/.bash_profile
+~/.bash_profile
 
 # Start the Emulator
 emulator -avd AVDPBIG
