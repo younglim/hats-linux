@@ -99,6 +99,16 @@ echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
 wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/usr-share-xpra-www.zip
 sudo unzip usr-share-xpra-www.zip -d /usr/share/xpra/
 
+# Python Gstreamer
+sudo apt-get install python-gi python3-gi \
+    gstreamer1.0-tools \
+    gir1.2-gstreamer-1.0 \
+    gir1.2-gst-plugins-base-1.0 \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav
+    
 # Install Android Emulator
 sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
 avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl'
