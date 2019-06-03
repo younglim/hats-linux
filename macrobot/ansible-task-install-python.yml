@@ -1,0 +1,11 @@
+---
+   - name: Install python 3
+     shell: sudo apt install python3
+   
+   - name: Install pip  
+     shell: sudo apt install python3-pip -y
+
+   - name: Install virtualenv  
+     shell: sudo apt install virtualenv -y
+     
+  

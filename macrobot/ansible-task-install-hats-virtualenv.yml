@@ -1,0 +1,30 @@
+---
+
+   - name: Create hats virtualenv
+     become: yes
+     shell: mkdir /opt/hats
+
+   - name: Chown $USER
+     become: yes
+     shell: chown $USER /opt/hats
+
+   - name: Configuring virtualenv
+     become: yes
+     shell: virtualenv /opt/hats
+
+   - name: Set hats env
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: 'source /opt/hats/bin/activate' }
+
+   - name: Install python-xlib and libjpeg-dev  
+     become: yes
+     shell: pip3 install python-xlib
+     shell: apt install libjpeg-dev zlib1g-dev -y
+
+   - name: Install from pip list
+     shell: pip3 install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt

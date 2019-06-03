@@ -1,0 +1,13 @@
+---
+
+  - name: Install usbutils
+    shell: sudo apt install usbutils -y
+
+  - name: Edit udev to allow usb devices for non-root users
+    shell: wget https://raw.githubusercontent.com/M0Rf30/android-udev-rules/master/51-android.rules
+    shell: sudo cp 51-android.rules /etc/udev/rules.d/51-android.rules
+    shell: sudo chmod a+r /etc/udev/rules.d/51-android.rules
+    shell: sudo groupadd adbusers
+    shell: sudo usermod -a -G adbusers $(whoami)
+    shell: sudo /sbin/udevadm control --reload-rules
+    shell: sudo systemctl restart systemd-udevd
