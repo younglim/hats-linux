@@ -54,9 +54,9 @@
      shell: . ~/.hats_shell && yes | sdkmanager --licenses
    - name: Install Android build tools
      shell: . ~/.hats_shell && yes | sdkmanager 'build-tools;28.0.2' 'platform-tools' 'platforms;android-28' 
-   - name: Install ant maven gradle
+   - name: Install ant maven gradle libpulse-dev
      become: yes
-     shell: apt install ant maven gradle -y
+     shell: apt install ant maven gradle libpulse-dev -y
    - name: Install Xvfb
      become: yes
      shell: apt install xvfb -y
