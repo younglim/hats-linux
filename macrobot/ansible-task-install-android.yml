@@ -36,8 +36,7 @@
        - { path: 'export PATH=$ANDROID_HOME/tools:$PATH' }
        - { path: 'export PATH=$ANDROID_HOME/tools/bin:$PATH' }
        - { path: 'export PATH=$ANDROID_SDK_ROOT/emulator:$PATH' }
-   - name: Reload hats_shell
-     shell: . ~/.hats_shell && sdkmanager --update
+  
    - name: Accept sdk licenses
      shell: . ~/.hats_shell && yes | sdkmanager --licenses
    - name: Install Android build tools
@@ -61,7 +60,6 @@
      with_items:
        - { path: 'sudo /opt/xvfb start' }
        - { path: 'export DISPLAY=:99' }
-
    - name: Install packages from sdkmanager
      shell: . ~/.hats_shell && sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
 
@@ -91,7 +89,5 @@
         state: present
      with_items:
         - { path: 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' }
-  #  - name: Start emulator
-  #    shell: . ~/.hats_shell && emulator -avd AVDPBIG
-
+   
    

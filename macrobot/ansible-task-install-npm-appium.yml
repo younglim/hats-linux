@@ -1,7 +1,9 @@
 ---
 
    - name: Install npm
-     shell: sudo apt install npm -y
+     become: yes
+     shell: apt install npm -y
 
    - name: Install appium
-     shell: sudo npm install -g appium@1.8.1
+     become: yes
+     shell: npm install -g appium@1.8.1

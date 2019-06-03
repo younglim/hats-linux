@@ -1,7 +1,14 @@
 ---
-
-  - name: Install scrcpy
-    shell: sudo apt install -y libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libavformat-dev
+  - name: Install scrcpy dependencies
+    become: yes
+    apt:
+      pkg:
+        - unzip
+        - libsdl2-mixer-2.0-0
+        - libsdl2-image-2.0-0
+        - libsdl2-2.0-0
+        - libavformat-dev
+      state: present
   - name: Unzip scrcpy
     become: yes
     unarchive:
@@ -16,12 +23,14 @@
       state: present
     with_items:
       - { path: 'export PATH=\$PATH:/usr/local/share/scrcpy' }
-  - name: Additional requirements for sharing screen over HTTP
+  - name: Install dependencies for sharing screen over HTTP
     shell: sudo apt install xpra python-websockify libcanberra-gtk-module -y 
     shell: echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
   - name: Create xpra directory
     become: yes
-    shell: mkdir /usr/share/xpra
+    file:
+        path: "/usr/share/xpra"
+        state: touch
   - name: Unzip usr-share-xpra
     become: yes
     unarchive:

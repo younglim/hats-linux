@@ -10,7 +10,7 @@
 
    - name: Configuring virtualenv
      become: yes
-     shell: virtualenv /opt/hats
+     shell: virtualenv --python=/usr/bin/python3 /opt/hats
 
    - name: Set hats env
      lineinfile: 
