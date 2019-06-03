@@ -92,16 +92,15 @@
      become: yes
      shell: addgroup kvm
      
+   - name: Install qemu-kvm libgl1 libpulse-dev
+     shell: sudo apt install qemu-kvm libgl1 libpulse-dev -y
+
    - name: Change ownership of /dev/kvm
      become: yes
      file:
         path: /dev/kvm
-        state: directory
         owner: "{{ lookup('env','USER') }}"
         
-   - name: Install qemu-kvm libgl1 libpulse-dev
-     shell: sudo apt install qemu-kvm libgl1 libpulse-dev -y
-
    - name: Set emulator env
      lineinfile: 
         dest: ~/.hats_shell
