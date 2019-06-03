@@ -14,7 +14,7 @@
         src: https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
         dest: /opt/android-sdk
         remote_src: yes
-   - name: Recursively change ownership of a android-sdk
+   - name: Recursively change ownership of android-sdk
      become: yes
      file:
         path: /opt/android-sdk
@@ -87,12 +87,20 @@
         state: present
      with_items:
         - { path: 'hw.keyboard=yes' }
-   - name: Create kvm group
-     shell: sudo addgroup kvm
 
+   - name: Create kvm group
+     become: yes
+     shell: addgroup kvm
+     
+   - name: Change ownership of /dev/kvm
+     become: yes
+     file:
+        path: /dev/kvm
+        state: directory
+        owner: "{{ lookup('env','USER') }}"
+        
    - name: Install qemu-kvm libgl1 libpulse-dev
      shell: sudo apt install qemu-kvm libgl1 libpulse-dev -y
-     shell: sudo adduser $USER kvm
 
    - name: Set emulator env
      lineinfile: 
