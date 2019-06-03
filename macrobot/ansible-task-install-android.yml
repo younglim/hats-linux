@@ -103,13 +103,4 @@
         path: /dev/kvm
         owner: "{{ lookup('env','USER') }}"
         
-   - name: Set emulator env
-     lineinfile: 
-        dest: ~/.hats_shell
-        insertafter: EOF
-        line: "{{ item.path }}"
-        state: present
-     with_items:
-        - { path: 'function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }' }
-   
-   
+ 
