@@ -90,7 +90,9 @@
 
    - name: Create kvm group
      become: yes
-     shell: addgroup kvm
+     group:
+         name: kvm      
+         state: present
      
    - name: Install qemu-kvm libgl1 libpulse-dev
      shell: sudo apt install qemu-kvm libgl1 libpulse-dev -y
