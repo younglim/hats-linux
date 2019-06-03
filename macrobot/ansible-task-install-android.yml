@@ -20,15 +20,6 @@
         path: /opt/android-sdk
         state: directory
         recurse: yes
-        owner: hats
-        group: hats
-        
-  - name: Recursively change ownership of a android-sdk
-     become: yes
-     file:
-        path: /opt/android-sdk
-        state: directory
-        recurse: yes
         owner: "{{ lookup('env','USER') }}"
         group: "{{ lookup('env','USER') }}"
 
