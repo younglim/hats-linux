@@ -1,16 +1,25 @@
 ---
 
+   - name: Delete hats virtualenv
+     become: yes
+     file:
+          path: /opt/hats
+          state: absent
+
    - name: Create hats virtualenv
      become: yes
-     shell: mkdir /opt/hats
-
-   - name: chown $USER
-     become: yes
-     shell: chown $USER /opt/hats
-
+     file: 
+          path: /opt/hats
+          state: directory
+          owner: "{{ lookup('env','USER') }}"
+ 
    - name: Configuring virtualenv
-     become: yes
      shell: virtualenv --python=/usr/bin/python3 /opt/hats
+
+   - name: Create ~/.hats_shell
+     file:
+          path: ~/.hats_shell
+          state: touch
 
    - name: Set hats env
      lineinfile: 
