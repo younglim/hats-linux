@@ -4,7 +4,7 @@
      become: yes
      shell: mkdir /opt/hats
 
-   - name: Chown $USER
+   - name: chown $USER
      become: yes
      shell: chown $USER /opt/hats
 
@@ -19,7 +19,7 @@
         line: "{{ item.path }}"
         state: present
      with_items:
-       - { path: 'source /opt/hats/bin/activate' }
+       - { path: '. /opt/hats/bin/activate' }
 
    - name: Install python-xlib and libjpeg-dev  
      become: yes
