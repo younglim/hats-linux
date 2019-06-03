@@ -22,6 +22,28 @@
         recurse: yes
         owner: hats
         group: hats
+        
+  - name: Recursively change ownership of a android-sdk
+     become: yes
+     file:
+        path: /opt/android-sdk
+        state: directory
+        recurse: yes
+        owner: "{{ lookup('env','USER') }}"
+        group: "{{ lookup('env','USER') }}"
+
+   - name: Create ~/.bash_profile
+     file:
+        path: ~/.bash_profile
+        state: touch
+
+   - name: Set .hats_shell in .bash_profile
+     lineinfile:
+        dest: ~/.bash_profile
+        insertafter: EOF
+        line: ". ~/.hats_shell"
+        state: present
+
    - name: Set Android env
      lineinfile: 
         dest: ~/.hats_shell
