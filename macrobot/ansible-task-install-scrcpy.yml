@@ -22,7 +22,7 @@
       line: "{{ item.path }}"
       state: present
     with_items:
-      - { path: 'export PATH=\$PATH:/usr/local/share/scrcpy' }
+      - { path: 'export PATH=$PATH:/usr/local/share/scrcpy' }
   - name: Install dependencies for sharing screen over HTTP
     shell: sudo apt install xpra python-websockify libcanberra-gtk-module -y 
     shell: echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
