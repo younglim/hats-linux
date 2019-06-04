@@ -30,7 +30,7 @@
     become: yes
     file:
         path: "/usr/share/xpra"
-        state: touch
+        state: directory
   - name: Unzip usr-share-xpra
     become: yes
     unarchive:
