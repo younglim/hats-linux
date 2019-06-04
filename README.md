@@ -25,7 +25,7 @@ rmdir /media/VBoxGuestAdditions
 
 Run:
 ```
-bash <(curl -s https://raw.githubusercontent.com/younglim/hats-ci/master/assets/mac-installer.sh)
+bash <(curl -s https://raw.githubusercontent.com/younglim/hats-linux/master/assets/ubuntu-installer.sh)
 ```
 
 ### CentOS/7 and Fedora
