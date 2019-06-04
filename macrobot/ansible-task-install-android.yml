@@ -28,6 +28,11 @@
         path: ~/.bash_profile
         state: touch
 
+   - name: Create ~/.hats_shell
+     file:
+        path: ~/.hats_shell
+        state: touch
+
    - name: Set .hats_shell in .bash_profile
      lineinfile:
         dest: ~/.bash_profile
