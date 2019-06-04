@@ -112,6 +112,7 @@
          state: present
      
    - name: Install qemu-kvm libgl1 libpulse-dev
+     become: yes
      apt:
        pkg:
          - qemu-kvm
