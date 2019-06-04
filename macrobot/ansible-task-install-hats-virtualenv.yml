@@ -34,10 +34,20 @@
      with_items:
        - { path: '. /opt/hats/bin/activate' }
 
-   - name: Install python-xlib and libjpeg-dev  
-     become: yes
-     shell: pip3 install python-xlib
-     shell: apt install libjpeg-dev zlib1g-dev -y
+   - name: Install libjpeg-dev and zlib1g-dev  
+     apt:
+          name: "{{ packages }}"
+     vars:
+         packages:
+         - libjpeg-dev
+         - zlib1g-dev
+
+   - name: Install python-xlib in pip3
+     pip:
+          name: python-xlib
+          virtualenv: /opt/hats
 
    - name: Install from pip list
-     shell: pip3 install -r https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
+     pip:
+          virtualenv: /opt/hats
+          requirements: https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
