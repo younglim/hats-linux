@@ -14,14 +14,17 @@
         src: https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
         dest: /opt/android-sdk
         remote_src: yes
+   - name: Capture whoami output to be used later
+     command: whoami
+     register: username
    - name: Recursively change ownership of android-sdk
      become: yes
      file:
         path: /opt/android-sdk
         state: directory
         recurse: yes
-        owner: "{{ lookup('env','USER') }}"
-        group: "{{ lookup('env','USER') }}"
+        owner: "{{ username.stdout_lines[0] }}"
+        group: "{{ username.stdout_lines[0] }}"
 
    - name: Create ~/.bash_profile
      file:
@@ -101,6 +104,6 @@
      become: yes
      file:
         path: /dev/kvm
-        owner: "{{ lookup('env','USER') }}"
+        owner: "{{ username.stdout_lines[0] }}"
         
  

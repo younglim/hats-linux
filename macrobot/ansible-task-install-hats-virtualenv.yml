@@ -6,12 +6,16 @@
           path: /opt/hats
           state: absent
 
+   - name: Capture whoami output to be used later
+     command: whoami
+     register: username
+
    - name: Create hats virtualenv
      become: yes
      file: 
           path: /opt/hats
           state: directory
-          owner: "{{ lookup('env','USER') }}"
+          owner: "{{ username.stdout_lines[0] }}"
  
    - name: Configuring virtualenv
      shell: virtualenv --python=/usr/bin/python3 /opt/hats
