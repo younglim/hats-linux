@@ -2,8 +2,13 @@
 
    - name: Install npm
      become: yes
-     shell: apt install npm -y
+     apt:
+      pkg:
+        - npm
+      state: present
 
    - name: Install appium
      become: yes
-     shell: npm install -g appium@1.8.1
+     npm:
+       name: appium@1.8.1
+       global: yes

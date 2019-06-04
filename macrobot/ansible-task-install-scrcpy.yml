@@ -24,7 +24,13 @@
     with_items:
       - { path: 'export PATH=$PATH:/usr/local/share/scrcpy' }
   - name: Install dependencies for sharing screen over HTTP
-    shell: sudo apt install xpra python-websockify libcanberra-gtk-module -y 
+    become: yes
+    apt:
+      pkg:
+        - xpra
+        - python-websockify
+        - libcanberra-gtk-module
+  - name: Allow any user
     shell: echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
   - name: Create xpra directory
     become: yes
@@ -37,3 +43,9 @@
       src: https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/usr-share-xpra-www.zip
       dest: /usr/share/xpra
       remote_src: yes
+
+  # - name: Create xpra group
+  #    become: yes
+  #    group:
+  #        name: xpra      
+  #        state: present
