@@ -110,7 +110,14 @@
      group:
          name: kvm      
          state: present
-     
+         
+   - name: Add user to kvm
+     become: yes
+     user:
+        name: "{{ username.stdout_lines[0] }}"
+        groups: kvm
+        append: yes
+
    - name: Install qemu-kvm libgl1 libpulse-dev
      become: yes
      apt:
