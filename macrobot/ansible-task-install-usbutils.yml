@@ -1,0 +1,24 @@
+---
+
+  - name: Install usbutils
+    apt:
+      pkg:
+        - usbutils
+      state: present
+  - name: Capture whoami output to be used later
+    command: whoami
+    register: username
+
+  - name: wget android_dev_rules
+    get_url:
+       url: https://raw.githubusercontent.com/M0Rf30/android-udev-rules/master/51-android.rules
+       dest: "/home/{{ username.stdout_lines[0] }}"
+   
+  - name: Edit udev to allow usb devices for non-root users
+    become: yes
+    shell: cp 51-android.rules /etc/udev/rules.d/51-android.rules
+    shell: chmod a+r /etc/udev/rules.d/51-android.rules
+    shell: groupadd adbusers
+    shell: usermod -a -G adbusers $(whoami)
+    shell: /sbin/udevadm control --reload-rules
+    shell: systemctl restart systemd-udevd

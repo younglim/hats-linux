@@ -1,0 +1,54 @@
+---
+
+   - name: Delete hats virtualenv
+     become: yes
+     file:
+          path: /opt/hats
+          state: absent
+
+   - name: Capture whoami output to be used later
+     command: whoami
+     register: username
+
+   - name: Create hats virtualenv
+     become: yes
+     file: 
+          path: /opt/hats
+          state: directory
+          owner: "{{ username.stdout_lines[0] }}"
+ 
+   - name: Configuring virtualenv
+     shell: virtualenv --python=/usr/bin/python3 /opt/hats
+
+   - name: Create ~/.hats_shell
+     file:
+          path: ~/.hats_shell
+          state: touch
+
+   - name: Set hats env
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: '. /opt/hats/bin/activate' }
+
+   - name: Install libjpeg-dev and zlib1g-dev  
+     become: yes
+     apt:
+          name: "{{ packages }}"
+     vars:
+         packages:
+         - libjpeg-dev
+         - zlib1g-dev
+
+   - name: Install python-xlib in pip3
+     pip:
+          name: python-xlib
+          virtualenv: /opt/hats
+
+   - name: Install from pip list
+     pip:
+          virtualenv: /opt/hats
+          requirements: https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt

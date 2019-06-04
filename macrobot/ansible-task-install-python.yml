@@ -1,0 +1,10 @@
+---
+   - name: Install python 3 pip virtualenv
+     become: yes
+     apt:
+      pkg:
+        - python3
+        - python3-pip
+        - virtualenv
+      state: present
+  

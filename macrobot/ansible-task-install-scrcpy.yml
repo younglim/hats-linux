@@ -1,0 +1,51 @@
+---
+  - name: Install scrcpy dependencies
+    become: yes
+    apt:
+      pkg:
+        - unzip
+        - libsdl2-mixer-2.0-0
+        - libsdl2-image-2.0-0
+        - libsdl2-2.0-0
+        - libavformat-dev
+      state: present
+  - name: Unzip scrcpy
+    become: yes
+    unarchive:
+      src: https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
+      dest: /usr/local/share
+      remote_src: yes
+  - name: Set scrcpy env
+    lineinfile: 
+      dest: ~/.hats_shell
+      insertafter: EOF
+      line: "{{ item.path }}"
+      state: present
+    with_items:
+      - { path: 'export PATH=$PATH:/usr/local/share/scrcpy' }
+  - name: Install dependencies for sharing screen over HTTP
+    become: yes
+    apt:
+      pkg:
+        - xpra
+        - python-websockify
+        - libcanberra-gtk-module
+  - name: Allow any user
+    shell: echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
+  - name: Create xpra directory
+    become: yes
+    file:
+        path: "/usr/share/xpra"
+        state: directory
+  - name: Unzip usr-share-xpra
+    become: yes
+    unarchive:
+      src: https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/usr-share-xpra-www.zip
+      dest: /usr/share/xpra
+      remote_src: yes
+
+  # - name: Create xpra group
+  #    become: yes
+  #    group:
+  #        name: xpra      
+  #        state: present

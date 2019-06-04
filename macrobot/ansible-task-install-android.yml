@@ -1,0 +1,129 @@
+---
+   - name: Create Android directory
+     become: yes
+     file: 
+        path: /opt/android-sdk
+        state: directory
+   - name: Install Unzip
+     become: yes
+     apt:
+        name: unzip
+   - name: Download Android SDK
+     become: yes
+     unarchive:
+        src: https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+        dest: /opt/android-sdk
+        remote_src: yes
+   - name: Capture whoami output to be used later
+     command: whoami
+     register: username
+   - name: Recursively change ownership of android-sdk
+     become: yes
+     file:
+        path: /opt/android-sdk
+        state: directory
+        recurse: yes
+        owner: "{{ username.stdout_lines[0] }}"
+        group: "{{ username.stdout_lines[0] }}"
+
+   - name: Create ~/.bash_profile
+     file:
+        path: ~/.bash_profile
+        state: touch
+
+   - name: Create ~/.hats_shell
+     file:
+        path: ~/.hats_shell
+        state: touch
+
+   - name: Set .hats_shell in .bash_profile
+     lineinfile:
+        dest: ~/.bash_profile
+        insertafter: EOF
+        line: ". ~/.hats_shell"
+        state: present
+
+   - name: Set Android env
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: 'export ANDROID_SDK_ROOT=/opt/android-sdk' }
+       - { path: 'export ANDROID_HOME=/opt/android-sdk' }
+       - { path: 'export ANDROID_SDK_HOME=~' }
+       - { path: 'export PATH=$ANDROID_HOME/platform-tools:$PATH' }
+       - { path: 'export PATH=$ANDROID_HOME/tools:$PATH' }
+       - { path: 'export PATH=$ANDROID_HOME/tools/bin:$PATH' }
+       - { path: 'export PATH=$ANDROID_SDK_ROOT/emulator:$PATH' }
+  
+   - name: Accept sdk licenses
+     shell: . ~/.hats_shell && yes | sdkmanager --licenses
+   - name: Install Android build tools
+     shell: . ~/.hats_shell && yes | sdkmanager 'build-tools;28.0.2' 'platform-tools' 'platforms;android-28' 
+   - name: Install ant maven gradle xvfb
+     become: yes
+     apt:
+       pkg:
+         - ant
+         - maven
+         - gradle
+         - xvfb
+       state: present
+   - name: Download Xvfb scripts
+     become: yes
+     get_url:
+       url: https://raw.githubusercontent.com/younglim/hats-linux/master/scripts/xvfb
+       dest: /opt/
+
+   - name: Make Xvfb executable
+     become: yes
+     shell: chmod +x /opt/xvfb
+   - name: Set Xvfb env
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: 'sudo /opt/xvfb start' }
+       - { path: 'export DISPLAY=:99' }
+
+   - name: Install packages from sdkmanager
+     shell: . ~/.hats_shell && sdkmanager "system-images;android-28;google_apis_playstore;x86_64"
+
+   - name: Create avd
+     shell: . ~/.hats_shell && avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl' --force
+   
+   - name: Set hw.keyboard=yes
+     lineinfile: 
+        dest: ~/.android/avd/AVDPBIG.avd/config.ini 
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+        - { path: 'hw.keyboard=yes' }
+
+   - name: Create kvm group
+     become: yes
+     group:
+         name: kvm      
+         state: present
+     
+   - name: Install qemu-kvm libgl1 libpulse-dev
+     become: yes
+     apt:
+       pkg:
+         - qemu-kvm
+         - libgl1
+         - libpulse-dev
+       state: present
+
+   - name: Change ownership of /dev/kvm
+     become: yes
+     file:
+        path: /dev/kvm
+        owner: "{{ username.stdout_lines[0] }}"
+        
+ 

@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+
+  tasks:
+  - import_tasks: ansible-task-enable-passwordless-sudo.yml
+  - import_tasks: ansible-task-install-corretto.yml
+  - import_tasks: ansible-task-install-android.yml
+  - import_tasks: ansible-task-install-python.yml
+  - import_tasks: ansible-task-install-python-gstream.yml
+  - import_tasks: ansible-task-install-hats-virtualenv.yml
+  - import_tasks: ansible-task-install-npm-appium.yml
+  - import_tasks: ansible-task-install-usbutils.yml
+  - import_tasks: ansible-task-install-scrcpy.yml
+
+
+

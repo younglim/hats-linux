@@ -1,0 +1,25 @@
+---
+
+   - name: Navigate to root directory
+     shell: cd /
+
+   - name: Install Corretto
+     become: yes
+     unarchive:
+        src: https://d3pxv6yz143wms.cloudfront.net/8.212.04.2/amazon-corretto-8.212.04.2-linux-x64.tar.gz
+        dest: /opt
+        remote_src: yes
+   - name: Create hats_shell
+     file:
+        path: "~/.hats_shell"
+        state: touch
+   - name: Set JAVA_HOME and Bin Directory for JAVA_HOME
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: 'export JAVA_HOME=/opt/amazon-corretto-8.212.04.2-linux-x64' }
+       - { path: 'export PATH=$PATH:$JAVA_HOME/bin' }
+  
