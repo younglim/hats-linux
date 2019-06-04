@@ -35,6 +35,7 @@
        - { path: '. /opt/hats/bin/activate' }
 
    - name: Install libjpeg-dev and zlib1g-dev  
+     become: yes
      apt:
           name: "{{ packages }}"
      vars:
