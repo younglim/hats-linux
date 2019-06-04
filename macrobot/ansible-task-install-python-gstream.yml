@@ -1,6 +1,6 @@
 ---
    
-   - name: Install packages
+   - name: Install python gstreamer packages
      become: yes
      apt:
       pkg:
