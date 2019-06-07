@@ -6,7 +6,7 @@ After=syslog.target network.target
 Type=simple
 User=ubuntu
 Group=ubuntu
-EnvironmentFile=/home/ubuntu/.bashrc
+Environment=XPRA_DEFAULT_VFB_RESOLUTION=800x600
 ExecStart=/bin/bash -l -c 'exec "$@"' _ /usr/bin/xpra start --bind-tcp=0.0.0.0:13000 --html=on --start-child="emulator -avd AVDPBIG" --file-transfer=off --open-files=off --daemon=no --speaker=disabled --microphone=disabled --window-close=ignore --dbus-proxy=no --dbus-control=no --desktop-scaling=off --encoding=jpeg --video-scaling=off :200
 SuccessExitStatus=143
 TimeoutSec=30s
