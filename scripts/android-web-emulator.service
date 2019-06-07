@@ -1,0 +1,15 @@
+[Unit]
+Description=Android Web Emulator AVDPBIG
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+EnvironmentFile=/home/ubuntu/.bashrc
+ExecStart=/bin/bash -l -c 'exec "$@"' _ /usr/bin/xpra start --bind-tcp=0.0.0.0:13000 --html=on --start-child="emulator -avd AVDPBIG" --file-transfer=off --open-files=off --daemon=no --speaker=disabled --microphone=disabled --window-close=ignore --dbus-proxy=no --dbus-control=no --desktop-scaling=off --encoding=jpeg --video-scaling=off :200
+SuccessExitStatus=143
+TimeoutSec=30s
+
+[Install]
+WantedBy=multi-user.target
