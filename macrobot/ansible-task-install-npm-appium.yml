@@ -7,14 +7,20 @@
         - npm
       state: present
    
-   - name: Give folder access to user
-     become: yes
-     file:
-        path: /usr/local/lib
-        mode: u=rw
-        
+  #  - name: Capture whoami output to be used later
+  #    command: whoami
+  #    register: username
+   
+  #  - name: Give folder access to user
+  #    become: yes
+  #    file:
+  #       path: /usr/local/lib/
+  #       owner: "{{ username.stdout_lines[0] }}"
+  #       group: "{{ username.stdout_lines[0] }}"
+
    - name: Install appium
      become: yes
      npm:
        name: appium@1.8.1
        global: yes
+      #  unsafe_perm: yes
