@@ -1,5 +1,19 @@
 ---
 
+   - name: Create ~/.hats_shell
+     file:
+          path: ~/.hats_shell
+          state: touch
+  
+   - name: Set PATH to include ~/.local/bin
+     lineinfile: 
+        dest: ~/.hats_shell
+        insertafter: EOF
+        line: "{{ item.path }}"
+        state: present
+     with_items:
+       - { path: 'export PATH="~/.local/bin:$PATH"' }
+       
    - name: Delete hats virtualenv
      become: yes
      file:
@@ -20,12 +34,7 @@
    - name: Configuring virtualenv
      shell: virtualenv --python=/usr/bin/python3 /opt/hats
 
-   - name: Create ~/.hats_shell
-     file:
-          path: ~/.hats_shell
-          state: touch
-
-   - name: Set hats env
+   - name: Set hats env to use virtualenv
      lineinfile: 
         dest: ~/.hats_shell
         insertafter: EOF
