@@ -47,8 +47,10 @@
      pip:
           name: python-xlib
           virtualenv: /opt/hats
+          executable: /usr/bin/pip3
 
    - name: Install from pip list
      pip:
           virtualenv: /opt/hats
           requirements: https://raw.githubusercontent.com/younglim/hats-ci/master/install-list/pip-install-list.txt
+          executable: /usr/bin/pip3
