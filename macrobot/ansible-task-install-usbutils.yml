@@ -1,6 +1,7 @@
 ---
 
   - name: Install usbutils
+    become: yes
     apt:
       pkg:
         - usbutils
