@@ -1,12 +1,20 @@
 ---
 
    - name: Install npm
+     become: yes
      apt:
       pkg:
         - npm
       state: present
-
+   
+   - name: Give folder access to user
+     become: yes
+     file:
+        path: /usr/local/lib
+        mode: u=rw
+        
    - name: Install appium
+     become: yes
      npm:
        name: appium@1.8.1
        global: yes
