@@ -9,7 +9,7 @@ installer_directory="$original_directory/hats-linux"
 
 touch ~/.bash_profile
 
-sudo apt install git ansible -y
+sudo apt install git ansible python3 -y
 git clone https://github.com/younglim/hats-linux.git
 
 cd "$installer_directory/macrobot"
