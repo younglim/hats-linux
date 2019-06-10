@@ -127,10 +127,4 @@
          - libpulse-dev
        state: present
 
-   - name: Change ownership of /dev/kvm
-     become: yes
-     file:
-        path: /dev/kvm
-        owner: "{{ username.stdout_lines[0] }}"
-        
  

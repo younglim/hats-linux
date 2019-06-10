@@ -2,6 +2,11 @@
 
 Steps to install test automation tools and dependencies for Ubuntu.
 
+## Automated install
+```
+bash <(curl -s https://raw.githubusercontent.com/younglim/hats-linux/master/assets/ubuntu-installer.sh)
+```
+
 ## Pre-requisites
 - tested on Ubuntu Desktop
 - Run commands as a sudoers user
