@@ -43,6 +43,15 @@
     line: ". ~/.hats_shell"
     state: present
 
+- name: Recursively change ownership of .android folder
+  become: yes
+  file:
+    path: ~/.android
+    state: directory
+    recurse: yes
+    owner: "{{ username.stdout_lines[0] }}"
+    group: "{{ username.stdout_lines[0] }}"
+
 - name: Set Android env
   lineinfile:
     dest: ~/.hats_shell
@@ -95,15 +104,6 @@
 
 - name: Create avd
   shell: . ~/.hats_shell && avdmanager create avd --package 'system-images;android-28;google_apis_playstore;x86_64' --name AVDPBIG --device 'pixel_xl' --force
-
-- name: Recursively change ownership of .android folder
-  become: yes
-  file:
-    path: ~/.android
-    state: directory
-    recurse: yes
-    owner: "{{ username.stdout_lines[0] }}"
-    group: "{{ username.stdout_lines[0] }}"
 
 - name: Set hw.keyboard=yes
   lineinfile:
