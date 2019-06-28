@@ -8,6 +8,11 @@
         - libsdl2-image-2.0-0
         - libsdl2-2.0-0
         - libavformat-dev
+        - ffmpeg
+        - libavcodec-dev 
+        - libavformat-dev 
+        - libavutil-dev
+        - libsdl2-dev
       state: present
   - name: Unzip scrcpy
     become: yes
