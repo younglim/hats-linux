@@ -17,13 +17,15 @@ DATE=`date +%Y%m%d`
 fakeroot make-kpkg --initrd --revision=$DATE.custom kernel_image
 cd ..
 ```
-Tip: Configure config with `make menuconfig`
+RHEL: Configure config with `make menuconfig`
 
 ```
 # Example for RHEL:
+sudo yum install elfutils-libelf-devel kernel-devel -y
 cd /usr/src/kernels/3.10.0-957.27.2.el7.x86_64
 sudo cp -r . ~/kernel
 cd ~/kernel
+sudo chown -R $USER:$USER .
 sudo make menuconfig
 ```
 
