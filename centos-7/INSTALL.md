@@ -123,7 +123,7 @@ touch $ANDROID_SDK_HOME/.android/repositories.cfg
 ## Install Android build tools
 ```
 yes | sdkmanager --licenses
-sdkmanager 'build-tools;28.0.2' 'platform-tools' 'platforms;android-28'
+sdkmanager 'build-tools;29.0.1' 'platform-tools' 'platforms;android-29'
 
 ```
 
