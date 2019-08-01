@@ -17,7 +17,15 @@ DATE=`date +%Y%m%d`
 fakeroot make-kpkg --initrd --revision=$DATE.custom kernel_image
 cd ..
 ```
+Tip: Configure config with `make menuconfig`
 
+```
+# Example for RHEL:
+cd /usr/src/kernels/3.10.0-957.27.2.el7.x86_64
+sudo cp -r . ~/kernel
+cd ~/kernel
+sudo make menuconfig
+```
 
 Install the kernel
 
