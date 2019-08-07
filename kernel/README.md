@@ -21,12 +21,26 @@ RHEL: Configure config with `make menuconfig`
 
 ```
 # Example for RHEL:
-sudo yum install elfutils-libelf-devel kernel-devel -y
-cd /usr/src/kernels/3.10.0-957.27.2.el7.x86_64
-sudo cp -r . ~/kernel
-cd ~/kernel
-sudo chown -R $USER:$USER .
-sudo make menuconfig
+yum groupinstall "Development Tools"
+yum install ncurses-devel
+yum install unifdef
+yum install bc
+
+rpm -ivh kernel-3.10.0-1062.el7.src.rpm
+tar -xvf /root/rpmbuild/SOURCES/linux-3.10.0-1062.el7.tar.xz
+cd /root/rpmbuild/SOURCES/linux-3.10.0-1062.el7
+cp /boot/config-3.10.0-957.27.2.el7.x86_64 .config
+
+make menuconfig
+
+# Device Drivers -->  USB Support -->
+# <M>   USB/IP support, 
+# <M>     VHCI hcd -->
+# (15)      Number of ports per USB/IP virtual host controller                      │ │  
+# (32)      Number of USB/IP virtual host controllers  
+# <Save> --> .config
+
+make rpm
 ```
 
 Install the kernel
