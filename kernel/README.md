@@ -73,10 +73,10 @@ Add and remove the following lines
  # Remove hyphens since they have special meaning in RPM filenames
  KERNELPATH := kernel-$(subst -,_,$(KERNELRELEASE))
  # Include only those top-level files that are needed by make, plus the GPL copy
--TAR_CONTENT := $(KBUILD_ALLDIRS) kernel.spec .config .scmversion Makefile \
-+TAR_CONTENT := $(KBUILD_ALLDIRS) kernel.spec .config .scmversion Makefile Makefile.qlock\
-                Kbuild Kconfig COPYING $(wildcard localversion*)
- TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
+TAR_CONTENT := $(KBUILD_ALLDIRS) kernel.spec .config .scmversion Makefile \
+-                Kbuild Kconfig COPYING $(wildcard localversion*)
++                Makefile.qlock Kbuild Kconfig COPYING $(wildcard localversion*)
+TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
  MKSPEC     := $(srctree)/scripts/package/mkspec
 ```
 
