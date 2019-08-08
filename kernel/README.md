@@ -87,5 +87,5 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 ```
 cd /root/rpmbuild/RPMS/x86_64
 yum remove kernel-firmware
-sudo yum install ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
+yum install ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
 ```
