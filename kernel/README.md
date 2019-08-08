@@ -66,7 +66,7 @@ make menuconfig
 ```
 
 ### Patch the issue of building rpm
-`vi /scripts/package/Makefile`
+`vi ./scripts/package/Makefile`
 
 Add and remove the following lines
 ```
