@@ -83,3 +83,9 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 ### Build RPM package
 `make rpm-pkg`
 
+### Install RPM package
+```
+cd /root/rpmbuild/RPMS/x86_64
+yum remove kernel-firmware
+sudo yum install ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
+```
