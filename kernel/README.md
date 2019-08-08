@@ -57,8 +57,8 @@ cp /boot/config-3.10.0-957.27.2.el7.x86_64 .config
 make menuconfig
 
 # Device Drivers -->  USB Support -->
-# <M>   USB/IP support, 
-# <M>     VHCI hcd -->
+# <*>   USB/IP support, 
+# <*>     VHCI hcd -->
 # (15)      Number of ports per USB/IP virtual host controller                      │ │  
 # (32)      Number of USB/IP virtual host controllers  
 # <Save> --> .config
