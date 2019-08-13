@@ -88,4 +88,20 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 cd /root/rpmbuild/RPMS/x86_64
 yum remove kernel-firmware
 yum install ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
+
+# Make it bootable
+new-kernel-pkg --mkinitrd --depmod --install 3.10.0
+
+# Check new GRUB menu boot order
+awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg
+
+# Temporarily boot into the new kernel, where 1 is the second menu entry in GRUB
+grub2-reboot 1
+# reboot
+
+# Modify the boot kernel to entry 1
+grub2-set-default 1
+
+# Rebuild GRUB configuration
+grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
