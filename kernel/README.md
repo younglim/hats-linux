@@ -84,10 +84,13 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 `make rpm-pkg`
 
 ### Install RPM package
+
+# Show duplicate kernels
+yum list --showduplicates kernel
+
 ```
 cd /root/rpmbuild/RPMS/x86_64
-yum remove kernel-firmware
-yum install ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
+sudo rpm -ivh --force ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
 
 # Make it bootable
 new-kernel-pkg --mkinitrd --depmod --install 3.10.0
