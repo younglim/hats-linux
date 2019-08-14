@@ -35,6 +35,11 @@ sudo reboot now
 
 ## RHEL: Configure config with `make menuconfig`
 
+### Optional: Disable `epel` release
+```
+yum --disablerepo=epel update
+```
+
 ### Install dependencies
 ```
 # Example for RHEL:
