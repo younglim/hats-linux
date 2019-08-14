@@ -81,6 +81,8 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 ```
 
 ### Build RPM package
+Note it takes about 1.5 hours to build with c5.large instance.
+
 `make rpm-pkg`
 
 ### Install RPM package
