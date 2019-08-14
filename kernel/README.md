@@ -85,10 +85,11 @@ TAR_CONTENT := $(addprefix $(KERNELPATH)/,$(TAR_CONTENT))
 
 ### Install RPM package
 
+```
 # Show duplicate kernels
 yum list --showduplicates kernel
 
-```
+# Install the RPMs
 cd /root/rpmbuild/RPMS/x86_64
 sudo rpm -ivh --force ./kernel-3.10.0-2.x86_64.rpm  ./kernel-headers-3.10.0-2.x86_64.rpm
 
