@@ -1,6 +1,24 @@
 # Custom Kernel with USB/IP and vhci-hcd support
 
-## Ubuntu: Compile the kernel with custom .config
+## Ubuntu: Option 1 Load the kernel modules dynamically
+
+```
+# Update the kernel if needed
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+# Install modules extra package
+sudo apt-get install linux-modules-extra-$(uname -r)
+
+# Reboot the machine
+sudo reboot now
+
+# Load the module
+sudo modprobe vhci-hcd
+```
+
+
+## Ubuntu: Option 2 Compile the kernel with custom .config
 
 ```
 sudo apt-get update -y
