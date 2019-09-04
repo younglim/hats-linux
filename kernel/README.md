@@ -7,6 +7,9 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+@ Reboot to load the latest installed kernel
+sudo reboot now
+
 # Install modules extra package
 sudo apt-get install linux-modules-extra-$(uname -r)
 
