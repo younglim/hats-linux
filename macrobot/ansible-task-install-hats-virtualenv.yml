@@ -54,7 +54,7 @@
 
    - name: Install python-xlib in pip3
      pip:
-          name: python-xlib
+          name: python3-xlib
           virtualenv: /opt/hats
 
    - name: Install from pip list
