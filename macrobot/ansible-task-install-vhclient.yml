@@ -2,13 +2,19 @@
 
   - name: wget vhclient
     get_url:
-       url: https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
+       url: https://www.virtualhere.com/sites/default/files/usbclient/{{ item }}
        dest: "/tmp"
+    loop:
+      - vhclientx86_64
+      - vhuit64
 
   - name: Make vhclient executable
     become: yes
     copy:
-       src: /tmp/vhclientx86_64
+       src: /tmp/{{ item }}
        dest: /usr/bin
        remote_src: yes
        mode: u=+x,g=+x,o=+x
+    loop:
+      - vhclientx86_64
+      - vhuit64
