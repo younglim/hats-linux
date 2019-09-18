@@ -51,11 +51,12 @@
          packages:
          - libjpeg-dev
          - zlib1g-dev
-
+        
    - name: Install python-xlib in pip3
-     pip:
-          name: python3-xlib
-          virtualenv: /opt/hats
+     shell: |
+       . ~/.bash_profile && /opt/hats/bin/pip3 install {{item}}
+     loop:
+       - python-xlib
 
    - name: Install from pip list
      pip:
