@@ -7,6 +7,10 @@
         - npm
       state: present
 
+   - name: Read and execute permissions for global node_modules
+     become: yes
+     command: chmod -R o+rx /usr/local/lib/node_modules
+     
    - name: Install appium
      become: yes
      npm:
