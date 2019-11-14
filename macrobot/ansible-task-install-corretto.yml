@@ -5,10 +5,9 @@
 
    - name: Install Corretto
      become: yes
-     unarchive:
-        src: https://d3pxv6yz143wms.cloudfront.net/8.212.04.2/amazon-corretto-8.212.04.2-linux-x64.tar.gz
-        dest: /opt
-        remote_src: yes
+     apt:
+        deb: https://d3pxv6yz143wms.cloudfront.net/8.232.09.1/java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb
+    
    - name: Create hats_shell
      file:
         path: "~/.hats_shell"
@@ -20,6 +19,6 @@
         line: "{{ item.path }}"
         state: present
      with_items:
-       - { path: 'export JAVA_HOME=/opt/amazon-corretto-8.212.04.2-linux-x64' }
+       - { path: 'export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto' }
        - { path: 'export PATH=$JAVA_HOME/bin:$PATH' }
   
