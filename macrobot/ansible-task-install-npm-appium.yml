@@ -1,12 +1,5 @@
 ---
 
-   - name: Install npm
-     become: yes
-     apt:
-      pkg:
-        - npm
-      state: fixed
-
    - name: Read and execute permissions for global node_modules
      become: yes
      command: chmod -R o+rx /usr/local/lib/node_modules
