@@ -39,7 +39,7 @@
 
   - name: Reload udev
     become: yes
-    command: "/sbin/udevadm control --reload-rules"
+    command: "udevadm control --reload-rules"
 
   - name: Restart systemd-udevd
     become: yes
